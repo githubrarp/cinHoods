@@ -7,6 +7,12 @@
  * PS: use console.log() to see the result
  */
 
+ const user = {
+     firstName : 'Nombre',
+     lastName : 'Apellido',
+     age : 20
+ }
+
 /**
  * Exercise 2
  *
@@ -15,6 +21,17 @@
  *
  * PS: use console.log() to see the result
  */
+
+const allTypes = {
+    my_string : '',
+    my_number : 0,
+    my_array : [],
+    my_object : theObject = {},
+    my_function : function myFunction() {},
+    my_bool : false
+};
+
+console.log(allTypes);
 
 /**
  * Exercise 3
@@ -25,3 +42,11 @@
  *
  * PS: use console.log() to see the result
  */
+
+function createMovieObject(name, rating, ticketPrice){
+    return movie = {
+        name,
+        rating,
+        ticketPrice
+    }
+}
