@@ -26,8 +26,6 @@ user.lastName = 'Rod';
  * and set a new property for 'user' object
  */
 
-function addANewProperty(first, second){
-    user.firstName = first;
-    user.lastName = second;
-    user.age = 25;
+function addANewProperty(property_age, age){
+    user[property_age] = age;
 }
