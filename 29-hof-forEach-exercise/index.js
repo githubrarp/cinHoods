@@ -26,6 +26,16 @@
  * use {forEachCallback} as a callback function for forEach
  */
 
+forEachCallback = anyParam => {
+    console.log(anyParam)
+};
+
+logAllWithExternalCallback = anArray => {
+    anArray.forEach(element =>{
+        forEachCallback(element);
+    })
+};
+
 /* =========================== */
 /* anonymous callbacks version */
 /* =========================== */
@@ -34,7 +44,15 @@
  * create a function {logAllWithAnonymousCallback} which will
  * do same thing as {logAllWithExternalCallback} but with
  * anonymous callback
- */
+ *
+*/
+
+logAllWithAnonymousCallback = anArray => {
+    anArray.forEach(element =>{
+        console.log(element);
+    })
+};
+
 
 /**
  * Exercise 2
@@ -47,8 +65,19 @@
  * without remainder
  *
  * Ex: dividableBy3([3,7,9,11]) => return [3,9]
- */
+ 
+*/
 
+dividableBy3 = anyArray => {
+    let filteredArray = [];
+
+    anyArray.forEach( element =>{
+        if (element%3 == 0){
+            filteredArray.push(element);
+        }
+    });
+    return filteredArray;
+}
 /**
  * Exercise 3
  * create an arrow function {oddNumbersSum} which takes an array
@@ -56,6 +85,16 @@
  *
  * Use forEach to loop through the array.
  */
+
+oddNumbersSum = anArr =>{
+    let sumOfOdds = 0;
+    anArr.forEach( element => {
+        if( element%2 !== 0 ){
+            sumOfOdds += element;
+        }
+    });
+    return sumOfOdds;
+}
 
 /**
  * Exercise 4
@@ -67,3 +106,14 @@
  *
  * Ex: ["cat", 5, "dog"] => 6
  */
+
+totalLength = anArr =>{
+    let concatAllStrings = '';
+    anArr.forEach( element => {
+        if (typeof(element) == 'string' ){
+            concatAllStrings += element;
+        }
+    });
+
+    return concatAllStrings.length;
+}
