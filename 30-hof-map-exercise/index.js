@@ -10,6 +10,19 @@
  * a new array.
  */
 
+convertToPositive = numArr => {
+    let resultingArr;
+    resultingArr = numArr.map( element => {
+        if(element < 0){
+            return (element * (-1));
+        }else{
+            return element;
+        }
+    })
+    return resultingArr;
+}
+
+
 /**
  * Exercise 2
  *
@@ -23,12 +36,33 @@
  * ]) will return ['Alex', 'John']
  */
 
+
+getAllNames = anArr =>{
+    let namesArr = [];
+    anArr.map(element => { 
+        namesArr.push(element.name);
+    });
+    return namesArr;
+}
+
+
+
 /**
  * Exercise 3
  *
  * create a function {greetAll} that takes array of names as a parameter
  * and return a new array of greetings "Hi, {name}!"
  */
+
+greetAll = nmArr => {
+    let resultingArr = [];
+    nmArr.map(element => {
+        resultingArr.push(`Hi, ${element}!`)        
+    });
+    return resultingArr;
+}
+
+
 
 /**
  * Exercise 4
@@ -37,3 +71,16 @@
  * and multiply all numbers inside array by 5 and return the whole array
  * with multiplied numbers
  */
+
+
+ multiplyAllNumbers = numArr => {
+     let newArr = [];
+     numArr.map(element => {
+         if(typeof(element) == 'number'){
+            newArr.push(element*5);
+         }else{
+            newArr.push(element);
+         }
+     })
+     return newArr;
+ }
