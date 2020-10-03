@@ -16,6 +16,15 @@
  *
  */
 
+const callback = () =>{}
+
+function forEach( anArray, callback){
+    for (i=0; i < anArray.length; i++ ){
+        callback( anArray[i] , i)
+    }
+}
+
+
 /**
  * Exercise #2
  *
@@ -29,6 +38,15 @@
  * time the callback was invoked.
  *
  */
+
+function map(array, callback){
+    let newArray = []
+    for(i=0; i<array.length; i++){
+        newArray.push(callback(array[i], i))
+    }
+    return newArray;
+}
+
 
 /**
  * Exercise #3
@@ -44,6 +62,17 @@
  *
  */
 
+
+ function filter(array, callback){
+     let newArray = []
+     for(i=0; i < array.length; i++){
+         if (Boolean(callback(array[i], i))){
+            newArray.push(array[i])
+         }
+     }
+     return newArray
+ }
+
 /**
  * Exercise #4
  *
@@ -57,6 +86,14 @@
  * truthy value.
  *
  */
+
+function find(array, callback){
+    for(i=0; i < array.length; i++){
+        if(Boolean(callback(array[i], i))){
+            return array[i]
+        } 
+    }
+} 
 
 /**
  * Exercise #5
@@ -72,6 +109,15 @@
  *
  */
 
+function findIndex(array, callback){
+    for(i=0; i < array.length; i++){
+        if(Boolean(callback(array[i], i))){
+            return i
+        } 
+    }
+}
+
+
 /**
  * Exercise #6
  *
@@ -85,7 +131,28 @@
  * callback was invoked it returned
  * a truthy value.
  *
+ * function every(array, callback){
+    for(i=0; i < array.length; i++){
+        if(callback(array[i], i) !== true){
+            return false;
+        }
+    }
+}
+
  */
+
+
+function every(array, callback){
+    let itIsTrue = 0;
+    for(i=0; i < array.length; i++){
+        if(!Boolean(callback(array[i], i))){
+            return false;
+        }
+    }
+    return true;
+}
+
+
 
 /**
  * Exercise #7
@@ -101,6 +168,14 @@
  * a truthy value.
  *
  */
+
+function some(array, callback){
+    for(i=0; i < array.length; i++){
+        if (Boolean(callback(array[i], i))){
+            return true
+        }
+    }
+}
 
 /**
  * Exercise #8
@@ -123,3 +198,11 @@
  * value.
  *
  */
+
+function reduce(array, callback, initialValue = 0){
+    let accum = initialValue
+    for (i=0; i < array.length; i++){
+        accum = callback(accum, array[i], i)
+    }
+    return accum
+}
