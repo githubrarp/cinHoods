@@ -91,12 +91,11 @@ const createAMessage = (message) => {
 
   setTimeout(() => {
     p.classList.add('visible');
-  }, 3000);
-  setTimeout(() => {
-    p.classList.add('hide');
-  }, 3000);
-  setTimeout(() => {
-    p.classList.remove('message');
-  }, 2000);
-  
+    setTimeout(() => {
+      p.classList.add('hide');
+      setTimeout(() => {
+        p.classList.remove('message');
+      }, 2000);
+    }, 3000);
+  }, 3000);  
 };
