@@ -66,7 +66,7 @@ const focusOnMe = () => {
  */
 
 const clickElsewhere = () => {
-  const listening = document.querySelector(".input");
+  const listening = document.querySelector("div.input input");
   listening.addEventListener("blur", () => {
     console.log("Logging to console");
   });
@@ -109,11 +109,10 @@ const releaseAKey = () => {
  */
 
 const inputToUpperCase = () => {
-  const listening = document.querySelector(".input");
-  const input = listening.value;
-  listening.addEventListener("keyup", () => {
+  const input = document.querySelector("div.input input");
+  input.addEventListener("keyup", () => {
     console.log(input.value.toUpperCase());
-    input = input.value.toUpperCase();
+    input.value = input.value.toUpperCase();
   });
 };
 
@@ -125,10 +124,9 @@ const inputToUpperCase = () => {
  */
 
 const handleSelectChange = () => {
-  const listening = document.querySelector("#items");
-  listening.addEventListener('click', () => {
-      console.log(listening.options[listening.selectedIndex].value);
-      listening.options[listening.selectedIndex].value;
+  const select = document.querySelector("#items");
+  select.addEventListener('change', () => {
+      console.log(select.value);
   });
 };
 
@@ -141,9 +139,10 @@ const handleSelectChange = () => {
  */
 
 const submitFormHandler = () => {
-  const frm = document.forms[0];
+  const frm = document.querySelector('form');
 
-  frm.addEventListener("submit", () => {
+  frm.addEventListener("submit", (event) => {
+    event.preventDefault();
     const firstName = frm.querySelector("input[name='firstName']").value;
     const lastName = frm.querySelector("input[name='lastName']").value;
     obj = {firstName: firstName, lastName: lastName};
