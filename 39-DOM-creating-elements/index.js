@@ -8,7 +8,13 @@
  * as an argument and returns a new DOM element.
  *
  * NOTE: we will use this function for other exercises.
+
+function createDOMElement(tag){
+    return createdElement;
+}
  */
+
+const createDOMElement = tag => createdElement = document.createElement(tag);
 
 /**
  * Exercise 2
@@ -17,6 +23,15 @@
  * create a "p" tag which displays the text and appends it to
  * the body of the document
  */
+
+//function addPTag(param)
+
+const addPTag = param => {
+    const pElement = document.createElement('p');
+    const theBody = document.querySelector('body');
+    pElement.innerText = param;
+    theBody.append(pElement);
+}
 
 /**
  * Exercise 3
@@ -27,6 +42,14 @@
  * the element to the body
  */
 
+const addElementWithClass = (tag, txt, clss) =>{
+    const bd = document.querySelector('body');
+    const el = document.createElement(tag);
+    el.classList.add(clss);
+    el.innerText = txt;
+    bd.append(el);
+}
+
 /**
  * Exercise 4
  *
@@ -34,6 +57,16 @@
  * text and an array of classes. Create an element which displays the
  * text, has the array of classes and append it to the body
  */
+
+const addElementWithMultipleClasses = (tag, txt, clss) => {
+    const bd = document.querySelector('body');
+    const el = document.createElement(tag);
+    for(i=0; i<clss.length; i++){
+        el.classList.add(clss[i]);
+    }
+    el.innerText = txt;
+    bd.append(el);
+}
 
 /**
  * Exercise 5
@@ -46,6 +79,20 @@
  * Each li should have the text "Item $" (where $ is it's position)
  * Add the list element to the body
  */
+
+const buildAList = (listType, clss, liNum) => {
+    const listElement = document.createElement(listType);
+    listElement.classList.add(clss);
+
+    for (let i = 0; i < liNum; i++) {
+        const listItem = document.createElement('li');
+        listItem.innerText = `Item ${i}`;
+        listElement.appendChild(listItem);
+    }
+
+    document.body.appendChild(listElement);
+
+}
 
 /**
  * Exercise 6
@@ -61,6 +108,20 @@
  *
  */
 
+//const myList = buildAList('ul', '' , '1');
+
+const prependLiToList = (txt, clss_args) => {
+
+    const myList = document.querySelector('ul');
+
+    const newLi = document.createElement('li');
+    newLi.classList.add(clss_args);
+    newLi.innerText = txt;
+
+    myList.prepend(newLi);
+    
+}
+
 /**
  * Exercise 7
  * !!! to test this function in your browser, first run {buildAList} !!!
@@ -74,6 +135,14 @@
  *
  */
 
+function pushToSelectedPosition(txt, cls, pos){
+    const myList = document.querySelector('ul');
+    const li = document.createElement('li');
+    li.innerText = txt;
+    li.classList.add(cls);
+    myList.insertBefore(li, myList.children[pos]);
+}
+
 /**
  * Exercise 8
  *
@@ -84,3 +153,10 @@
  * element which match the element selector
  *
  */
+
+const deleteSelectedElements = (parentSelector, elementSelector) => {
+    const parent = document.querySelector(parentSelector);
+    const children = parent.querySelectorAll(elementSelector);
+    console.log(children);
+    [...children].forEach(element => parent.removeChild(element));
+}

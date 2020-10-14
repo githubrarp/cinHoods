@@ -1,0 +1,26 @@
+{"clients":
+    [{
+        "id":1,
+        "firstName":"John",
+        "lastName":"Smith",
+        "age":"40",
+        "phone":"123-456-7890",
+        "address":"London"
+        },
+        {
+        "id":2,
+        "firstName":"Andre",
+        "lastName":"Sachez",
+        "age":"30",
+        "phone":"456-321-7890",
+        "address":"Panama"
+        },
+        {
+            "id":3,
+            "firstName":"OK Name",
+            "lastName":"Any LastName",
+            "age":"34",
+            "phone":"987-456-7890",
+            "address":"France"
+        }
+    ]}

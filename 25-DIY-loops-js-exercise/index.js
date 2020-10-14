@@ -38,6 +38,48 @@ const dataTypes = [
  * }
  */
 
+function sortedData(dataTypes){
+  let arrInt = [];
+  let arrFloat = [];
+  let arrString = [];
+  let arrObject = [];
+  let arrArray = [];
+
+  result = {}
+
+  for(data of dataTypes){
+    switch (typeof(data)){
+      case 'number':
+        if(Number.isInteger(data)){
+            arrInt.push(data);
+        }else{
+            arrFloat.push(data);
+        }
+        break;
+      case 'string':
+        arrString.push(data);
+        break;
+      case 'object':
+        if(Array.isArray(data) ){
+          arrArray.push(data);
+        }else{
+          arrObject.push(data);
+        }
+        break;
+    }
+  }
+
+  result = {
+      'integers' : arrInt,
+      'strings' : arrString,
+      'floats' : arrFloat,
+      'objects' : arrObject,
+      'arrays' : arrArray
+  }
+  
+  return result;
+}
+
 
 /**
  * Exercise 2
@@ -51,6 +93,21 @@ const dataTypes = [
  * result: [6, 12, 6]
  */
 
+function multipliedByNextNumber(pass){
+  resultingArray = [];
+
+  for (key in pass){
+      if(Number(key) == Number(pass.length-1)){
+          resultingArray.push(pass[Number(pass.length-1)]);
+      }else{
+          resultingArray.push(pass[key]*pass[Number(key) + 1]);
+      }
+  }
+  return resultingArray;
+  
+}
+
+
 /**
  * Exercise 3
  *
@@ -63,6 +120,22 @@ const dataTypes = [
  * ex: multipliedEvenNumbers([4,3,6,8,5,7])
  * result: [24, 3, 48, 16, 5, 7]
  */
+
+const multipliedEvenNumbers = (array) => {
+
+  const evenNums = array.filter(num => num%2 === 0);
+  
+  const modifiedEvens = evenNums.map((num, index) => {
+	return evenNums[index + 1] ? num * evenNums[index + 1] : num * 2;
+  });
+  
+  const newArray = array.map(item=>
+	item %2 ? item : modifiedEvens.shift()
+  );
+  
+  return newArray;
+};
+ 
 
 
 /**
@@ -78,6 +151,27 @@ const dataTypes = [
  * result: [4, 15, 6, 8, 35, 7]
  */
 
+const multipliedOddNumbers = (array) => {
+
+  const oddNums = array.filter(num => num%2 === 1);
+  
+  const modifiedOdds = oddNums.map((num, index) => {
+	return oddNums[index + 1] ? num * oddNums[index + 1] : num * 1;
+  });
+  
+console.log(modifiedOdds);
+
+  const newArray = array.map(item=>
+	item %2 ? modifiedOdds.shift() : item
+  );
+  
+console.log(array, newArray);
+
+  return newArray;
+};
+
+
+
 /**
  * Exercise 5
  *
@@ -88,3 +182,13 @@ const dataTypes = [
  * if you pass "odd" do the same what you have for exercise 4
  * else return original array.
  */
+
+function multipliedEvenOddNumbers(arr, typ){
+  if (typ == 'odd'){
+    return multipliedOddNumbers(arr);
+  }else if (typ == 'even'){
+    return multipliedEvenNumbers(arr);
+  }else{
+    return arr;
+  }
+}
