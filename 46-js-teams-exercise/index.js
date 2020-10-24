@@ -17,6 +17,61 @@ let players = {
   team2: [],
 };
 
+let team1_ul = document.querySelector(".team1");
+let team2_ul = document.querySelector(".team2");
+const pool_ul = document.querySelector(".pool");
+
+const createPlayerEl = () => {
+  for (let i = 0; i < players.pool.length - 1; i++) {
+    const li = document.createElement('li');
+    li.innerHTML = `${players.pool[i]} <button class="to_team1"> < </button><button class="to_team2"> > </button>`;
+    pool_ul.appendChild(li);
+
+    const buttonToTeam1 = li.querySelector('.to_team1');
+    li.appendChild(buttonToTeam1);
+    buttonToTeam1.addEventListener('click', () => {
+      players.team1.push(li);
+      players.pool.pop(li);
+      team1_ul.appendChild(li);
+    })
+
+    const buttonToTeam2 = li.querySelector('.to_team2');
+    li.appendChild(buttonToTeam2);
+    buttonToTeam2.addEventListener('click', () => {
+      players.team2.push(li);
+      players.pool.pop(li);
+      team2_ul.appendChild(li);
+    })
+
+  }
+}
+
+
+reset.addEventListener('click', () => {
+  players.team1 = [];
+  players.team2 = [];
+  players.pool = [
+    "Sam",
+    "Vasile",
+    "Mimi",
+    "Tom",
+    "Andrew",
+    "Ben",
+    "Archibald",
+    "Adam",
+    "Alex",
+    "Aaron",];
+
+  team1_ul.innerHTML = '';
+  team2_ul.innerHTML = '';
+  pool_ul.innerHTML = '';
+
+  createPlayerEl();
+});
+
+createPlayerEl();
+
+
 /* ======================= */
 /**
  * Create a team picker app which will have 3 columns:
