@@ -9,7 +9,7 @@ const ingredients = [
 const syncCookIngredient = ({ name, time }) => {
   const start = Date.now();
   console.log(`Start cooking ${name}`);
-  while (start + time > Date.now()) {}
+  while (start + time > Date.now()) { }
 
   console.log(`${name} cooked!`);
 };
@@ -26,6 +26,12 @@ const syncCookIngredient = ({ name, time }) => {
  * log the message "Soup is ready to serve"
  */
 
+const syncCookMeal = (givenArray) => {
+  givenArray.forEach(ingredient => {
+    syncCookIngredient(ingredient)
+  })
+  console.log("Soup is ready to serve");
+}
 
 
 /**
@@ -43,6 +49,13 @@ const syncCookIngredient = ({ name, time }) => {
  *
  */
 
+const asyncCookIngredient = ingredient => {
+  console.log(`Start cooking ${ingredient.name}`);
+  setTimeout(function () {
+    console.log(`${ingredient.name} cooked!`);
+  }, ingredient.time);
+}
+
 /**
  * Exercise 3
  *
@@ -52,5 +65,11 @@ const syncCookIngredient = ({ name, time }) => {
  * 
  * After all the ingredients are cooked,
  * log the message "Soup is ready to serve"
- */
+**/
 
+async function asyncCookMeal(ingredientsToCook) {
+  await ingredientsToCook.forEach(ingredient => {
+    asyncCookIngredient(ingredient);
+  });
+  console.log("Soup is ready to serve");
+}
