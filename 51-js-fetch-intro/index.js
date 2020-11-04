@@ -18,6 +18,24 @@ const input = document.querySelector("input");
  * `Request failed with status code: {errorCode}`
  */
 
+const getResponse = async (url)=>{
+    const response = await fetch(url);
+    console.log('Got here and will check IF now...')
+    if(response.status === 200){
+        console.log('STATUS ok');
+        const aHref = document.createElement('a');
+        aHref.setAttribute('href', url);
+        aHref.setAttribute('target', '_blank');
+        aHref.innerHTML = aHref;
+        result.innerHTML = `Valid link!`;
+        result.appendChild(aHref);
+    }else{
+        console.log('STATUS failed');
+        result.innerHTML = `Request failed with status code: ${response.status }`
+    }
+    console.log('After IF is boring');
+}
+
 /**
  * Description of the application:
  *
@@ -31,3 +49,5 @@ const input = document.querySelector("input");
  * 5. When I focus on input, it should clear my input and hide
  * {result}
  */
+
+form.addEventListener('submit', () => { getResponse(input.value)});
