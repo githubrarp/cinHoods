@@ -1,6 +1,4 @@
-const form = document.querySelector("form");
-const result = document.querySelector(".result");
-const input = document.querySelector("input");
+
 // ================================
 
 // url for testing: http://numbersapi.com/random
@@ -16,8 +14,30 @@ const input = document.querySelector("input");
  * URL as an argument and sends a GET request.
  * When you receive a response, render the
  * string in {.result} element
- */
+*/
+const form = document.querySelector("form");
+const result = document.querySelector(".result");
+const input = document.querySelector("input");
 
+//url = 'http://numbersapi.com/random';
+
+const getResponse = async (url) => {
+    const txt = await fetch(url).then(response => response.text());
+    return txt;
+}
+
+//console.log(`I'm consoling out ${getResponse('http://numbersapi.com/random')}`)
+
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const url = input.value
+    result.innerText = await getResponse(url);
+})
+
+input.addEventListener('focus', () => {
+    input.value = '';
+    result.innerText = '';
+})
 
 /**
  * Description of the application:
