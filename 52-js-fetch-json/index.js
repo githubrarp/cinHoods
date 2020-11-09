@@ -17,6 +17,30 @@ const input = document.querySelector("input");
  * When you get a response, return an array of facts.
  */
 
+
+const fetchData = async (url) => {
+    const response = await fetch(url)
+        .then(response => response.json());
+    return response.all.filter(fact => fact);
+}
+
+url = "https://cat-fact.herokuapp.com/facts";
+
+button.addEventListener("click", async () => {
+    const data = await fetchData(url);
+    for (let i = 0; i < 3; i++) {
+        const randomElement = Math.floor(Math.random() * data.length); 
+        const li = document.createElement('li');
+        const pFact = document.createElement('p');
+        const pUser = document.createElement('p');
+        pFact.innerText = data[randomElement].text;
+        pUser.innerText = `${data[randomElement].user.name.first} ${data[i].user.name.last}`;
+        li.appendChild(pFact);
+        li.appendChild(pUser);
+        result.appendChild(li);
+    }
+})
+
 /**
  * Description of the application:
  *
